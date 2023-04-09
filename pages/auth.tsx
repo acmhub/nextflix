@@ -1,8 +1,10 @@
 import { useCallback, useState } from "react";
 import Image from "next/image";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import axios from "axios";
 import { signIn } from "next-auth/react";
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
 import Input from "../components/Input";
 
 function Auth() {
@@ -89,6 +91,21 @@ function Auth() {
 						>
 							{variant === "login" ? "Login" : "Sign up"}
 						</button>
+
+						<div className="flex flex-row items-center gap-4 mt-8 justify-center">
+							<div
+								className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition"
+								onClick={() => signIn("google", { callbackUrl: "/" })}
+							>
+								<FcGoogle size={30} />
+							</div>
+							<div
+								className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition"
+								onClick={() => signIn("github", { callbackUrl: "/" })}
+							>
+								<FaGithub size={30} />
+							</div>
+						</div>
 
 						<p className="text-neutral-500 mt-12">
 							{variant === "login" ? "First time using Nextflix?" : "Already have an account?"}
