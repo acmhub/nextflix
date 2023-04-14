@@ -4,9 +4,11 @@ import Navbar from "../components/Navbar";
 import Billboard from "../components/Billboard";
 import MovieList from "../components/MovieList";
 import useMovieList from "../hooks/useMovieList";
+import useFavorites from "../hooks/useFavorites";
 
 export default function Home() {
 	const { data: movies = [] } = useMovieList();
+	const { data: favorites = [] } = useFavorites();
 
 	return (
 		<div>
@@ -15,6 +17,7 @@ export default function Home() {
 
 			<div className="pb-40">
 				<MovieList data={movies} title="Trending now" />
+				<MovieList data={favorites} title="My List" />
 			</div>
 		</div>
 	);
