@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useRouter } from "next/router";
 import { BsFillPlayFill } from "react-icons/bs";
+import { AiOutlineInfo } from "react-icons/ai";
 import FavoriteButton from "./FavoriteButton";
+import useInfoModalStore from "../hooks/useInfoModalStore";
 
 interface MovieCardProps {
 	data: Record<string, any>;
@@ -9,6 +11,11 @@ interface MovieCardProps {
 
 function MovieCard({ data }: MovieCardProps) {
 	const router = useRouter();
+	const { openModal } = useInfoModalStore();
+
+	const handleOpenModal = useCallback(() => {
+		openModal(data?.id);
+	}, [openModal, data?.id]);
 
 	return (
 		<div className="group bg-zinc-900 col-span relative h-[12vw]">
@@ -39,6 +46,13 @@ function MovieCard({ data }: MovieCardProps) {
 							<BsFillPlayFill className="text-black translate-x-0.5" size={30} />
 						</div>
 						<FavoriteButton movieId={data?.id} />
+
+						<button
+							className="cursor-pointer ml-auto group/item w-6 h-6 lg:w-10 lg:h-10 border-white border-2 rounded-full flex justify-center items-center transition hover:border-neutral-300"
+							onClick={handleOpenModal}
+						>
+							<AiOutlineInfo size={30} />
+						</button>
 					</div>
 
 					<p className="text-red-600 font-semibold mt-4">
