@@ -1,34 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Nextflix
 
-## Getting Started
+A Fullstack Netflix clone using NextJS 13, Prisma, NextAuth, MongoDB, Zustand, TailwindCSS and TypeScript.
 
-First, run the development server:
+![project](https://i.imgur.com/AnImLpL.jpeg)
+
+## Features
+
+-   Authentification using email, Google or Github account
+-   Protected Routes that require authentication to access
+-   Server Side Rendering
+-       CRUD functionality to manage user's favorite movies, allowing them to create, read, update, and delete movie entries.
+-   Custom hooks for managing state and data
+-   Dynamic Routes based on movie id
+-   Zustand to manage the modal state related to the movie
+-   Fully Responsive
+
+#### How to run locally
+
+1. Clone the project
 
 ```bash
-npm run dev
-# or
-yarn dev
+  git clone https://github.com/acmhub/nextflix.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Execute `npm install` or `yarn` to install all the packages.
+3. Setup .env file
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+-   [Create MongoDB cluster](https://cloud.mongodb.com/v2/63627ca671fa4007f530b7c4#/clusters)
+-   [Github OAuth registration](https://github.com/settings/applications/new)
+-   [Google OAuth registration](https://console.cloud.google.com/)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```
+DATABASE_URL=
+NEXTAUTH_JWT_SECRET=
+NEXTAUTH_SECRET=
+GITHUB_ID=
+GITHUB_SECRET=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+#### Start the app
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+`npm run dev` or `yarn start`
